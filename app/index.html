@@ -3,23 +3,74 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GTA VI trophy checklist</title>
-<link rel="stylesheet" href="style.css">
+<title>Leonida Vault — GTA 6 Trophy Guide &amp; Tracker</title>
+<link rel="stylesheet" href="./style.css">
 </head>
 <body>
-<header>
-  <h1>GTA VI trophy checklist</h1>
-  <p id="progress">0 of 55 earned</p>
+<header class="masthead">
+  <div class="brand">
+    <h1>LEONIDA VAULT</h1>
+    <p class="tagline">Every GTA 6 trophy, checked against 10 sources — with a tracker that remembers where you are.</p>
+  </div>
+  <div class="mast-side">
+    <div id="progress" class="progress">0 / 55 earned · 0%</div>
+    <label class="spoiler-wrap"><input type="checkbox" id="spoiler"> Spoiler guard — hide story &amp; hidden trophies until earned</label>
+    <div class="mast-btns">
+      <button class="btn small" id="export">Export progress</button>
+      <label class="btn small file-label">Import progress<input type="file" id="import-file" accept="application/json" hidden></label>
+      <button class="btn small" id="demo">Load demo progress (13/55)</button>
+      <button class="btn small" id="reset">Reset</button>
+    </div>
+    <p class="saved-note">Saved in this browser. Works offline — no network requests, no account.</p>
+  </div>
 </header>
-<div class="controls">
-  <label>Grade <select id="grade"><option value="all">All</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
-  <button id="export" type="button">Export progress</button>
-  <label class="import">Import progress <input id="import" type="file" accept="application/json"></label>
-</div>
-<table>
-  <thead><tr><th>Earned</th><th>Trophy</th><th>Grade</th><th>How to get it</th></tr></thead>
-  <tbody id="rows"></tbody>
-</table>
-<script type="module" src="app.js"></script>
+
+<div id="audit" class="audit" aria-label="Audit strip"></div>
+
+<nav class="tabs" aria-label="Views">
+  <button class="tab active" data-tab="ledger">Ledger</button>
+  <button class="tab" data-tab="roadmap">Roadmap to Platinum</button>
+  <button class="tab" data-tab="matrix">Source Matrix</button>
+  <button class="tab" data-tab="missables">Missables &amp; Watch</button>
+</nav>
+
+<main>
+  <section id="view-ledger" class="view active">
+    <div class="ledger">
+      <aside class="col-checklist">
+        <div class="filters" role="group" aria-label="Filter by kind">
+          <button class="kind-btn active" data-kind="all">All 55</button>
+          <button class="kind-btn" data-kind="story">Story</button>
+          <button class="kind-btn" data-kind="side">Side</button>
+          <button class="kind-btn" data-kind="collectibles">Collectibles</button>
+          <button class="kind-btn" data-kind="activities">Activities</button>
+          <button class="kind-btn" data-kind="crime">Crime</button>
+          <button class="kind-btn" data-kind="money">Money</button>
+          <button class="kind-btn" data-kind="misc">Misc</button>
+          <button class="kind-btn" data-kind="goal">Goal</button>
+        </div>
+        <input type="search" id="search" placeholder="Search trophies…" aria-label="Search trophies">
+        <div id="checklist" class="checklist"></div>
+      </aside>
+      <article id="detail" class="col-detail"></article>
+      <aside id="sources" class="col-sources"></aside>
+    </div>
+  </section>
+  <section id="view-roadmap" class="view">
+    <div id="roadmap" class="roadmap"></div>
+  </section>
+  <section id="view-matrix" class="view">
+    <div id="matrix" class="matrix-wrap"></div>
+  </section>
+  <section id="view-missables" class="view">
+    <div id="missables" class="missables"></div>
+  </section>
+</main>
+
+<footer>
+  <p>Leonida Vault — an unofficial fan guide. Not affiliated with Rockstar Games. Trophy names, descriptions and grades are the official PlayStation list; every guide step is written in our own words and cites its source. Sources were read on 20 Nov 2026. Six trophies are still unconfirmed — their guides say so instead of guessing.</p>
+</footer>
+
+<script type="module" src="./src/app.js"></script>
 </body>
 </html>
